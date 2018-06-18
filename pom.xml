@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>pl.krzysg</groupId>
+    <artifactId>JavaCppTemplate</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.bytedeco</groupId>
+            <artifactId>javacpp</artifactId>
+            <version>1.4.1</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.bytedeco</groupId>
+                <artifactId>javacpp</artifactId>
+                <configuration>
+                    <classPath>${project.build.outputDirectory}</classPath>
+                    <includePaths>
+                        <includePath>${project.build.sourceDirectory}</includePath>
+                        <includePath>${basedir}/src/main/cpp/pl/krzysg/</includePath>
+                    </includePaths>
+                    <linkPaths>
+                        <!--<linkPath>${basedir}/native/LibAPR/build/</linkPath>-->
+                        <!-- <linkPath>/usr/local/Cellar/hdf5/1.10.2_1/lib/</linkPath> -->
+                    </linkPaths>
+                    <copyLibs>true</copyLibs>
+                    <compilerOptions>
+                        <compilerOption>-std=c++14</compilerOption>
+                    </compilerOptions>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>process-classes</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                        <configuration>
+                            <classOrPackageNames>
+                                <classOrPackageName>pl.krzysg.MyCppLib</classOrPackageName>
+                            </classOrPackageNames>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>
