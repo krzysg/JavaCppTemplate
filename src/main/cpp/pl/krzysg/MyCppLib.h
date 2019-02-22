@@ -11,6 +11,8 @@ namespace MyCppLib {
             std::cout << "Hello world from CPP!" << std::endl;
         }
 
+        double xyz = 123;
+
     };
 }
 
