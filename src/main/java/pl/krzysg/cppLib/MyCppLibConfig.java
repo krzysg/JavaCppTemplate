@@ -1,9 +1,7 @@
-package pl.krzysg;
+package pl.krzysg.cppLib;
 
-import org.bytedeco.javacpp.annotation.Namespace;
 import org.bytedeco.javacpp.annotation.Platform;
 import org.bytedeco.javacpp.annotation.Properties;
-import org.bytedeco.javacpp.tools.Info;
 import org.bytedeco.javacpp.tools.InfoMap;
 import org.bytedeco.javacpp.tools.InfoMapper;
 
@@ -21,10 +19,8 @@ import org.bytedeco.javacpp.tools.InfoMapper;
 //}
 
 @Properties(
-        value = @Platform(include="MyCppLib.h"), target = "MyCppTarget"
+        value = @Platform(include="MyCppLib.h"), target = "pl.krzysg.cppLib.target.MyCppTarget"
 )
 public class MyCppLibConfig implements InfoMapper {
-        public void map(InfoMap infoMap) {
-//            infoMap.put(new Info("MyCppClass").pointerTypes("MyCppClass").define());
-        }
+        public void map(InfoMap infoMap) {}
 }

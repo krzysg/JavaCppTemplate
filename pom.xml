@@ -54,7 +54,7 @@
                             <skip>false</skip>
                             <outputDirectory>${project.build.sourceDirectory}</outputDirectory>
                             <!-- Change to your package name -->
-                            <classOrPackageName>pl.krzysg.MyCppLibConfig.*</classOrPackageName>
+                            <classOrPackageName>pl.krzysg.cppLib.*</classOrPackageName>
                         </configuration>
                     </execution>
                     <execution>
@@ -65,7 +65,7 @@
                         </goals>
                         <configuration>
                             <classOrPackageNames>
-                                <classOrPackageName>MyCppTarget</classOrPackageName>
+                                <classOrPackageName>pl.krzysg.cppLib.target.*</classOrPackageName>
                             </classOrPackageNames>
                         </configuration>
                     </execution>
