@@ -11,6 +11,8 @@
     <properties>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
@@ -22,8 +24,43 @@
     </dependencies>
 
     <build>
-        <plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.1.0</version>
+                    <executions>
+                        <execution>
+                            <id>javacpp.parser.resources</id>
+                            <phase>generate-sources</phase>
+                            <goals>
+                                <goal>resources</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.7.0</version>
+                    <executions>
+                        <execution>
+                            <id>javacpp.parser.presets</id>
+                            <phase>generate-sources</phase>
+                            <goals>
+                                <goal>compile</goal>
+                            </goals>
+                            <configuration>
+                                <includes>
+                                    <include>pl/krzysg/cppLib/presets/*.java</include>
+                                </includes>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
 
+        <plugins>
             <plugin>
                 <groupId>org.bytedeco</groupId>
                 <artifactId>javacpp</artifactId>
@@ -31,11 +68,9 @@
                 <configuration>
                     <classPath>${project.build.outputDirectory}</classPath>
                     <includePaths>
-                        <includePath>${project.build.sourceDirectory}</includePath>
                         <includePath>${basedir}/src/main/cpp/pl/krzysg/</includePath>
                     </includePaths>
                     <linkPaths>
-                        <!--<linkPath>${basedir}/native/LibAPR/build/</linkPath>-->
                         <!-- <linkPath>/usr/local/Cellar/hdf5/1.10.2_1/lib/</linkPath> -->
                     </linkPaths>
                     <copyLibs>true</copyLibs>
@@ -44,19 +79,6 @@
                     </compilerOptions>
                 </configuration>
                 <executions>
-                    <execution>
-                        <id>javacpp.parser</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>build</goal>
-                        </goals>
-                        <configuration>
-                            <skip>false</skip>
-                            <outputDirectory>${project.build.sourceDirectory}</outputDirectory>
-                            <!-- Change to your package name -->
-                            <classOrPackageName>pl.krzysg.cppLib.presets.*</classOrPackageName>
-                        </configuration>
-                    </execution>
                     <execution>
                         <id>process-classes</id>
                         <phase>compile</phase>

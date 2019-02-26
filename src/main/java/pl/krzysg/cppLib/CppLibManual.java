@@ -7,8 +7,8 @@ import org.bytedeco.javacpp.annotation.Namespace;
 import org.bytedeco.javacpp.annotation.Platform;
 
 @Platform(include="MyCppLib.h")
-@Namespace("MyCppLib")
 public class CppLibManual {
+    @Namespace("MyCppLib")
     static public class MyCppClass extends Pointer {
         static { Loader.load(); }
         public MyCppClass() { allocate(); }
