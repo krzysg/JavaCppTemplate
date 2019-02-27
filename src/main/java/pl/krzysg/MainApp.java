@@ -7,7 +7,7 @@ import pl.krzysg.cppLib.target.MyCppTarget;
 public class MainApp {
 
     public static void main(String[] args) {
-        System.out.println("Hello world from Java! 2");
+        System.out.println("Hello world from Java!");
 
         System.out.println("--------- automatically created wrapper -----------");
         // Test of automatically generated wrapper
