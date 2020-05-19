@@ -13,6 +13,8 @@
         <maven.compiler.source>1.8</maven.compiler.source>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        
+	<javacpp.parser.skip>false</javacpp.parser.skip>     <!-- To skip header file parsing phase: -Djavacpp.parser.skip=true  -->
     </properties>
 
     <dependencies>
@@ -87,7 +89,19 @@
                         <compilerOption>-std=c++14</compilerOption>
                     </compilerOptions>
                 </configuration>
-                <executions>
+		<executions>
+		    <execution>
+                        <id>javacpp.parser</id>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                        <configuration>
+                            <skip>${javacpp.parser.skip}</skip>
+			    <outputDirectory>${project.build.sourceDirectory}</outputDirectory>
+			    <classOrPackageName>pl.krzysg.cppLib.presets.MyCppLibConfig</classOrPackageName>
+                        </configuration>
+                    </execution>
                     <execution>
                         <id>process-classes</id>
                         <phase>compile</phase>
