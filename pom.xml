@@ -15,13 +15,15 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         
 	<javacpp.parser.skip>false</javacpp.parser.skip>     <!-- To skip header file parsing phase: -Djavacpp.parser.skip=true  -->
+
+        <javacpp.version>1.4.1</javacpp.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.bytedeco</groupId>
             <artifactId>javacpp</artifactId>
-            <version>1.4.1</version>
+            <version>${javacpp.version}</version>
         </dependency>
     </dependencies>
 
@@ -75,7 +77,7 @@
             <plugin>
                 <groupId>org.bytedeco</groupId>
                 <artifactId>javacpp</artifactId>
-                <version>1.4.1</version>
+                <version>${javacpp.version}</version>
                 <configuration>
                     <classPath>${project.build.outputDirectory}</classPath>
                     <includePaths>
